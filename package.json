@@ -1,0 +1,48 @@
+{
+  "name": "iwealth-tax-lien-calculator",
+  "description": "Calculator to simulate tax lien investing.",
+  "version": "0.1.0",
+  "private": true,
+  "keywords": [
+    "React",
+    "iWealthRE",
+    "ReAppDev"
+  ],
+  "homepage": "https://www.reappdev.com/iWealth",
+  "author": "ReAppDev, Inc.",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "joi-browser": "^13.4.0",
+    "lodash": "^4.17.15",
+    "node-sass": "^4.12.0",
+    "query-string": "^6.8.1",
+    "rc-slider": "^8.6.13",
+    "rc-tooltip": "^3.7.3",
+    "react": "^16.8.6",
+    "react-datepicker": "^2.8.0",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

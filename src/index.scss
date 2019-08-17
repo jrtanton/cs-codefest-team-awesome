@@ -1,0 +1,67 @@
+$primary: #098ec7;
+$secondary: #3bb24a;
+
+@import "~bootstrap/scss/bootstrap.scss";
+
+body {
+  margin: 45px 0 45px 0;
+  font-family: Poppins, Montserrat, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+input.form-check-input,
+label.form-check-label {
+  cursor: pointer;
+}
+
+input:disabled {
+  cursor: not-allowed;
+}
+
+.slider-text {
+  padding-top: 45px;
+  color: #098ec7;
+  text-align: center;
+}
+
+h5 {
+  margin-top: 25px;
+}
+
+// Color Palette
+// https://paletton.com/#uid=72R0u0klpsObMIOh8xMqFqusJku
+
+.nav-item {
+  cursor: pointer;
+}
+
+/* Brand Colors */
+.dark-font {
+  color: #666666;
+}
+
+.light-font {
+  color: #ffffff;
+}
+
+.logo-blue {
+  background-color: #098ec7;
+}
+
+.logo-green {
+  background-color: #3bb24a;
+}
+
+.dark-gary {
+  background-color: #283139;
+}
+
+.light-blue {
+  background-color: #08c1d6;
+}
