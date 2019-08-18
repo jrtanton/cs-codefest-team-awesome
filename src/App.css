@@ -17,3 +17,7 @@
   border-radius: 8px;
   margin: 5px 5px;
 }
+
+.landing-card-wrapper {
+  display: inline-block
+}

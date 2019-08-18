@@ -104,9 +104,9 @@ const Events = props => {
             />
           ))}
       </div>
-      {/* <button className="btn btn-defatult" onClick={handleSeedEvents}>
+      <button className="btn btn-defatult" onClick={handleSeedEvents}>
         Seed Events
-      </button> */}
+      </button>
     </React.Fragment>
   );
 };
