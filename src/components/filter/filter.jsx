@@ -4,7 +4,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./filter.css";
 
 const Filter = props => {
-  const { skills, filterEventHandler, changeDateHandler, dateRange } = props;
+  const {
+    skills,
+    filterEventHandler,
+    changeStartDateHandler,
+    changeEndDateHandler
+  } = props;
+  const { startDate, endDate } = props.dateRange;
   return (
     <div id="filter-container">
       <div className="row">
@@ -21,15 +27,29 @@ const Filter = props => {
             </div>
           ))}
         </div>
-        <div className="col-sm-12">
-          <DatePicker
-            className="form-control"
-            selected={dateRange.startDate}
-            selectsStart
-            startDate={dateRange.startDate}
-            endDate={dateRange.endDate}
-            onChange={changeDateHandler}
-          />
+        <div className="column">
+          <h4>Dates</h4>
+          <div className="col-sm-12">
+            <DatePicker
+              className="form-control"
+              selected={startDate}
+              selectsStart
+              startDate={startDate}
+              endDate={endDate}
+              onChange={changeStartDateHandler}
+            />
+          </div>
+          <div className="col-sm-12">
+            <DatePicker
+              className="form-control"
+              selected={endDate}
+              selectsEnd
+              startDate={startDate}
+              endDate={endDate}
+              onChange={changeEndDateHandler}
+              minDate={startDate}
+            />
+          </div>
         </div>
       </div>
     </div>

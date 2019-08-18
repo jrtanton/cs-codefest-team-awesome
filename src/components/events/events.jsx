@@ -26,6 +26,13 @@ const Events = props => {
   ]);
 
   useEffect(() => {
+    getEvents().then(events => {
+      setEvents(events);
+      setAllEvents(events);
+    });
+  }, []);
+
+  useEffect(() => {
     const selectedSkills = skills
       .filter(s => s.active)
       .map(s => s.name)
@@ -36,19 +43,16 @@ const Events = props => {
       return;
     }
 
-    const matchingEvents = allEvents.filter(
-      e => e.skills.filter(s => selectedSkills.includes(s.name)).length > 0
-    );
+    console.log(allEvents);
+
+    const matchingEvents = Object.keys(allEvents)
+      .map(k => allEvents[k])
+      .filter(
+        e => e.skills.filter(s => selectedSkills.includes(s.name)).length > 0
+      );
 
     setEvents(matchingEvents);
   }, [skills]);
-
-  useEffect(() => {
-    getEvents().then(events => {
-      setEvents(events);
-      setAllEvents(events);
-    });
-  }, []);
 
   const handleAttendEvent = e => {
     console.log(e.currentTarget.id);
@@ -66,17 +70,23 @@ const Events = props => {
     setSkills(skillsCopy);
   };
 
-  const handleChangeDate = ({ startDate, endDate }) => {
+  const handleChange = ({ startDate, endDate }) => {
     startDate = startDate || dateRange.startDate;
     endDate = endDate || dateRange.endDate;
-    setDateRange({ startDate: startDate, endDate: endDate });
+    setDateRange({ startDate, endDate });
+    console.log(dateRange);
   };
+
+  const handleChangeStart = startDate => handleChange({ startDate });
+
+  const handleChangeEnd = endDate => handleChange({ endDate });
 
   return (
     <React.Fragment>
       <Filter
         filterEventHandler={handleFilterEvent}
-        changeDateHandler={handleChangeDate}
+        changeStartDateHandler={handleChangeStart}
+        changeEndDateHandler={handleChangeEnd}
         dateRange={dateRange}
         skills={skills}
       />
@@ -90,7 +100,6 @@ const Events = props => {
             />
           ))}
       </div>
-      <button onClick={handleSeedEvents}>Seed Events Table</button>
     </React.Fragment>
   );
 };

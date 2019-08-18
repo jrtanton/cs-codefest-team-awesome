@@ -1,10 +1,14 @@
 #filter-container {
   position: fixed;
+  padding-left: 30px;
+  padding-right: 30px;
   top: 0;
   left: 0;
   width: 20%;
+  min-width: 100px;
   height: 100%;
   background-color: #223e92;
+  color: #ffffff;
 }
 
 .skills-container div:hover {

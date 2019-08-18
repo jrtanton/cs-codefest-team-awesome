@@ -3,7 +3,6 @@ import "./event-card.css";
 
 const EventCard = props => {
   const { event, attendEventHandler } = props;
-  console.log(event);
   return (
     <div className="row e-card">
       <div className="col-sm-3">
