@@ -10,6 +10,25 @@ export default function OrganizationForm() {
     const [newSkill,setNewSkill] = useState("");
     const [time,setTime] = useState(new Date());
 
+    /*
+        Organization Name*:
+        Description*:
+        Website:
+        Social Media:
+        Email*:
+        Phone:
+        Username*:
+        Password*:
+
+        {
+            id: 12,
+            name: "FoodBank",
+            description: "A place to feed hungry people",
+            email: "fb@food.com"
+        }
+
+    */
+
     const inputHandler = (e) => {
         switch(e.target.id) {
             case "title":
@@ -63,7 +82,7 @@ export default function OrganizationForm() {
 
     return (
         <div>
-            <h1>Create Event</h1>
+            <h1>Register Organization</h1>
             <form onSubmit={createEventHandler}>
                 <div className="form-group">
                     <label htmlFor="title">Title</label>

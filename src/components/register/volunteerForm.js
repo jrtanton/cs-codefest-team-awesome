@@ -10,6 +10,25 @@ export default function VolunteerForm() {
     const [newSkill,setNewSkill] = useState("");
     const [time,setTime] = useState(new Date());
 
+    /*
+        Volunteer Name*:
+        Description*:
+        Email*:
+        Phone:
+        Skills:
+        Username*:
+        Password*:
+
+        {
+            id: 1,
+            name: "Jarrod",
+            email: "jarrod.tanton@gmail.com",
+            phone: "1234561234",
+            skills: [],
+            eventHistory: []
+        }
+    */
+
     const inputHandler = (e) => {
         switch(e.target.id) {
             case "title":
@@ -63,7 +82,7 @@ export default function VolunteerForm() {
 
     return (
         <div>
-            <h1>Create Event</h1>
+            <h1>Register Volunteer</h1>
             <form onSubmit={createEventHandler}>
                 <div className="form-group">
                     <label htmlFor="title">Title</label>
