@@ -5,3 +5,7 @@
 .App-link {
   color: #61dafb;
 }
+
+.landing-card-wrapper {
+  display: inline-block
+}

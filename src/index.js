@@ -6,7 +6,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-  <BrowserRouter basename={"/iWealth"}>
+  <BrowserRouter>
     <App />
   </BrowserRouter>,
   document.getElementById("tax-lien-calculator")
