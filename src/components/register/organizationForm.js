@@ -1,61 +1,51 @@
 import React, {useState} from 'react';
-import DatePicker from "react-datepicker"; 
-import "react-datepicker/dist/react-datepicker.css";
 
 export default function OrganizationForm() {
-    const [title,setTitle] = useState("");
+    const [name,setName] = useState("");
     const [description,setDescription] = useState("");
-    const [location,setLocation] = useState("");
-    const [skills,setSkills] = useState([]);
-    const [newSkill,setNewSkill] = useState("");
-    const [time,setTime] = useState(new Date());
-
-    /*
-        Organization Name*:
-        Description*:
-        Website:
-        Social Media:
-        Email*:
-        Phone:
-        Username*:
-        Password*:
-
-        {
-            id: 12,
-            name: "FoodBank",
-            description: "A place to feed hungry people",
-            email: "fb@food.com"
-        }
-
-    */
+    const [website,setWebsite] = useState("");
+    const [facebook,setFacebook] = useState("");
+    const [twitter,setTwitter] = useState("");
+    const [instagram,setInstagram] = useState("");
+    const [email,setEmail] = useState("");
+    const [phone,setPhone] = useState("");
+    const [password,setPassword] = useState("");
 
     const inputHandler = (e) => {
         switch(e.target.id) {
-            case "title":
-                setTitle(e.target.value)
+            case "name":
+                setName(e.target.value)
                 break;
             case "description":
                 setDescription(e.target.value)
                 break;
-            case "location":
-                setLocation(e.target.value)
+            case "website":
+                setWebsite(e.target.value)
                 break;
-            case "newSkill":
-                setNewSkill(e.target.value)
+            case "facebook":
+                setFacebook(e.target.value)
+                break;
+            case "twitter":
+                setTwitter(e.target.value)
+                break;
+            case "instagram":
+                setInstagram(e.target.value)
+                break;
+            case "email":
+                setEmail(e.target.value)
+                break;
+            case "phone":
+                setPhone(e.target.value)
+                break;
+            case "password":
+                setPassword(e.target.value)
                 break;
             default:
                 break;
         }
     }
 
-    const skillsHandler  = (e) => {
-        const skillsCopy = [...skills]
-        skillsCopy.push(newSkill)
-        setSkills(skillsCopy)
-        setNewSkill("")
-    }
-
-    const createEventHandler = (e) => {
+    const createOrganizationHandler = (e) => {
         e.preventDefault()
         fetch(`${process.env.REACT_APP_BACKEND_URI}/endpoint`, {
             method: 'post',
@@ -64,11 +54,15 @@ export default function OrganizationForm() {
               'Authorization': `Token ${'token'}`
             },
             body: JSON.stringify({
-                "title": title,
-                "description": description,
-                "location": location,
-                "skills": skills,
-                "time": time.toISOString()
+                name,
+                description,
+                website,
+                facebook,
+                twitter,
+                instagram,
+                email,
+                phone,
+                password
             })
         })
         .then( res => res.json() )
@@ -83,40 +77,42 @@ export default function OrganizationForm() {
     return (
         <div>
             <h1>Register Organization</h1>
-            <form onSubmit={createEventHandler}>
+            <form onSubmit={createOrganizationHandler}>
                 <div className="form-group">
-                    <label htmlFor="title">Title</label>
-                    <input type="text" className="form-control" id="title" aria-describedby="titleDescription" placeholder="Enter title" value={title} onChange={inputHandler} />
+                    <label htmlFor="name">Name</label>
+                    <input type="text" className="form-control" id="name" aria-describedby="nameDescription" placeholder="Enter name" value={name} onChange={inputHandler} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="description">Description</label>
                     <input type="text" className="form-control" id="description" aria-describedby="descriptionDescription" placeholder="Enter description" value={description} onChange={inputHandler} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="location">Location</label>
-                    <input type="text" className="form-control" id="location" aria-describedby="locationDescription" placeholder="Enter location" value={location} onChange={inputHandler} />
+                    <label htmlFor="website">Website</label>
+                    <input type="text" className="form-control" id="website" aria-describedby="websiteDescription" placeholder="Enter website" value={website} onChange={inputHandler} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="newSkill">Skills Needed</label>
-                    <div className="input-group">
-                        <div className="input-group-prepend">
-                            <button className="btn btn-outline-secondary" onClick={skillsHandler} type="button">Add Skill</button>
-                        </div>
-                        <input type="text" className="form-control" id="newSkill" aria-describedby="skillsDescription" placeholder="Enter a skill needed" value={newSkill} onChange={inputHandler} />
-                    </div>
-                    <small id="skillsDescription" className="form-text text-muted">What skills do you need for your event?</small>
-                    <div className="skills-container">
-                        {skills.map((v,i) => <div key={i}>{v}</div>)}
-                    </div>
+                    <label htmlFor="facebook">Facebook</label>
+                    <input type="text" className="form-control" id="facebook" aria-describedby="facebookDescription" placeholder="Enter facebook" value={facebook} onChange={inputHandler} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="date">Date Of Event</label><br/>
-                    <DatePicker
-                        id="date"
-                        className="form-control"
-                        selected={time}
-                        onChange={setTime}
-                    />
+                    <label htmlFor="twitter">Twitter</label>
+                    <input type="text" className="form-control" id="twitter" aria-describedby="twitterDescription" placeholder="Enter twitter" value={twitter} onChange={inputHandler} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="instagram">Instagram</label>
+                    <input type="text" className="form-control" id="instagram" aria-describedby="instagramDescription" placeholder="Enter instagram" value={instagram} onChange={inputHandler} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input type="text" className="form-control" id="email" aria-describedby="emailDescription" placeholder="Enter email" value={email} onChange={inputHandler} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="phone">Phone</label>
+                    <input type="text" className="form-control" id="phone" aria-describedby="phoneDescription" placeholder="Enter phone" value={phone} onChange={inputHandler} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <input type="text" className="form-control" id="password" aria-describedby="passwordDescription" placeholder="Enter password" value={password} onChange={inputHandler} />
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>           
