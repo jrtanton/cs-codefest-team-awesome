@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import EventCard from "../event-card/event-card";
 import Filter from "../filter/filter";
-import { getEvents, seedEvents } from "../../services/event-service";
+import {
+  getEvents,
+  seedEvents,
+  attendEvent
+} from "../../services/event-service";
 import "./events.css";
 
 const Events = props => {
@@ -55,7 +59,8 @@ const Events = props => {
   }, [skills]);
 
   const handleAttendEvent = e => {
-    console.log(e.currentTarget.id);
+    const eventId = e.currentTarget.id;
+    attendEvent(eventId, localStorage.getItem("userId"));
   };
 
   const handleSeedEvents = e => {
@@ -74,7 +79,6 @@ const Events = props => {
     startDate = startDate || dateRange.startDate;
     endDate = endDate || dateRange.endDate;
     setDateRange({ startDate, endDate });
-    console.log(dateRange);
   };
 
   const handleChangeStart = startDate => handleChange({ startDate });
@@ -100,6 +104,9 @@ const Events = props => {
             />
           ))}
       </div>
+      {/* <button className="btn btn-defatult" onClick={handleSeedEvents}>
+        Seed Events
+      </button> */}
     </React.Fragment>
   );
 };

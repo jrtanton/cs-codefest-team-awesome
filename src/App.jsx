@@ -1,8 +1,10 @@
 import React from "react";
 import { Switch, Redirect, Route } from "react-router-dom";
 import Home from "./components/home/home";
-import CreateEvent from "./components/createEvent/createEvent";
+import CreateEvent from "./components/create-event/create-event";
 import Register from "./components/register/register";
+import Login from "./components/login/login";
+import Events from "./components/events/events";
 import NotFound from "./common/notfound";
 import "./App.css";
 
@@ -12,6 +14,8 @@ function App() {
       <Switch>
         <Route path={`/create-event`} component={CreateEvent} />
         <Route path={`/register`} component={Register} />
+        <Route path={`/login`} component={Login} />
+        <Route path={`/events`} component={Events} />
         <Route path={`/home`} component={Home} />
         <Route path={`/not-found`} component={NotFound} />
         <Redirect from={`/`} exact to={`/home`} />
