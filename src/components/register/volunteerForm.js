@@ -1,44 +1,26 @@
 import React, {useState} from 'react';
-import DatePicker from "react-datepicker"; 
-import "react-datepicker/dist/react-datepicker.css";
 
 export default function VolunteerForm() {
-    const [title,setTitle] = useState("");
-    const [description,setDescription] = useState("");
-    const [location,setLocation] = useState("");
+    const [name,setName] = useState("");
+    const [email,setEmail] = useState("");
+    const [password,setPassword] = useState("");
+    const [phone,setPhone] = useState("");
     const [skills,setSkills] = useState([]);
     const [newSkill,setNewSkill] = useState("");
-    const [time,setTime] = useState(new Date());
-
-    /*
-        Volunteer Name*:
-        Description*:
-        Email*:
-        Phone:
-        Skills:
-        Username*:
-        Password*:
-
-        {
-            id: 1,
-            name: "Jarrod",
-            email: "jarrod.tanton@gmail.com",
-            phone: "1234561234",
-            skills: [],
-            eventHistory: []
-        }
-    */
 
     const inputHandler = (e) => {
         switch(e.target.id) {
-            case "title":
-                setTitle(e.target.value)
+            case "name":
+                setName(e.target.value)
                 break;
-            case "description":
-                setDescription(e.target.value)
+            case "email":
+                setEmail(e.target.value)
                 break;
-            case "location":
-                setLocation(e.target.value)
+            case "phone":
+                setPhone(e.target.value)
+                break;
+            case "password":
+                setPassword(e.target.value)
                 break;
             case "newSkill":
                 setNewSkill(e.target.value)
@@ -55,7 +37,7 @@ export default function VolunteerForm() {
         setNewSkill("")
     }
 
-    const createEventHandler = (e) => {
+    const createVolunteerHandler = (e) => {
         e.preventDefault()
         fetch(`${process.env.REACT_APP_BACKEND_URI}/endpoint`, {
             method: 'post',
@@ -64,11 +46,11 @@ export default function VolunteerForm() {
               'Authorization': `Token ${'token'}`
             },
             body: JSON.stringify({
-                "title": title,
-                "description": description,
-                "location": location,
-                "skills": skills,
-                "time": time.toISOString()
+                name,
+                email,
+                phone,
+                password,
+                skills
             })
         })
         .then( res => res.json() )
@@ -83,40 +65,35 @@ export default function VolunteerForm() {
     return (
         <div>
             <h1>Register Volunteer</h1>
-            <form onSubmit={createEventHandler}>
+            <form onSubmit={createVolunteerHandler}>
                 <div className="form-group">
-                    <label htmlFor="title">Title</label>
-                    <input type="text" className="form-control" id="title" aria-describedby="titleDescription" placeholder="Enter title" value={title} onChange={inputHandler} />
+                    <label htmlFor="name">Name</label>
+                    <input type="text" className="form-control" id="name" aria-describedby="nameDescription" placeholder="Enter name" value={name} onChange={inputHandler} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="description">Description</label>
-                    <input type="text" className="form-control" id="description" aria-describedby="descriptionDescription" placeholder="Enter description" value={description} onChange={inputHandler} />
+                    <label htmlFor="email">Email</label>
+                    <input type="text" className="form-control" id="email" aria-describedby="emailDescription" placeholder="Enter email" value={email} onChange={inputHandler} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="location">Location</label>
-                    <input type="text" className="form-control" id="location" aria-describedby="locationDescription" placeholder="Enter location" value={location} onChange={inputHandler} />
+                    <label htmlFor="phone">Phone</label>
+                    <input type="text" className="form-control" id="phone" aria-describedby="phoneDescription" placeholder="Enter phone" value={phone} onChange={inputHandler} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="newSkill">Skills Needed</label>
+                    <label htmlFor="password">Password</label>
+                    <input type="text" className="form-control" id="password" aria-describedby="passwordDescription" placeholder="Enter password" value={password} onChange={inputHandler} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="newSkill">Your Skills</label>
                     <div className="input-group">
                         <div className="input-group-prepend">
                             <button className="btn btn-outline-secondary" onClick={skillsHandler} type="button">Add Skill</button>
                         </div>
                         <input type="text" className="form-control" id="newSkill" aria-describedby="skillsDescription" placeholder="Enter a skill needed" value={newSkill} onChange={inputHandler} />
                     </div>
-                    <small id="skillsDescription" className="form-text text-muted">What skills do you need for your event?</small>
+                    <small id="skillsDescription" className="form-text text-muted">What skills can you provide?</small>
                     <div className="skills-container">
                         {skills.map((v,i) => <div key={i}>{v}</div>)}
                     </div>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="date">Date Of Event</label><br/>
-                    <DatePicker
-                        id="date"
-                        className="form-control"
-                        selected={time}
-                        onChange={setTime}
-                    />
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>           

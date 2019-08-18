@@ -1,8 +1,8 @@
 import React from "react";
 import { Switch, Redirect, Route } from "react-router-dom";
 import Home from "./components/home/home";
-import CreateEvent from "../createEvent/createEvent";
-import Register from "../register/register";
+import CreateEvent from "./components/createEvent/createEvent";
+import Register from "./components/register/register";
 import NotFound from "./common/notfound";
 import "./App.css";
 
