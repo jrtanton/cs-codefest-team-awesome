@@ -19,7 +19,12 @@ const schema = {
       id: 12,
       name: "FoodBank",
       description: "A place to feed hungry people",
-      email: "fb@food.com"
+      website: "www.foodbank.com",
+      facebook: "www.facebook.com/foodbank",
+      twitter: "www.twitter.com/foodbank",
+      instagram: "www.instagram.com/foodbank",
+      email: "fb@food.com",
+      phone: "123-456-7890"
     },
     skills: [{ id: 1, name: "Cooking" }, { id: 2, name: "Administrative" }]
 }
