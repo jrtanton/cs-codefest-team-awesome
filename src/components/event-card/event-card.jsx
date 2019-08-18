@@ -38,9 +38,9 @@ const EventCard = props => {
           {event.location}
         </p>
         <div className="skills-container">
-          {event.skills.map(s => (
-            <div key={s.id}>{s.name}</div>
-          ))}
+          {event.skills
+            ? event.skills.map(s => <div key={s.id}>{s.name}</div>)
+            : [<div>Any</div>]}
         </div>
         <button
           id={event.id}
