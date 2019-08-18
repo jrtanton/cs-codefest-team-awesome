@@ -5,3 +5,19 @@
 .App-link {
   color: #61dafb;
 }
+
+.skills-container {
+  margin-top: 20px;
+  padding: 20px;
+  color: #ffffff;
+}
+
+.skills-container div {
+  display: inline-block;
+  background-color: gray;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 6px;
+  border-radius: 8px;
+  margin: 5px 5px;
+}

@@ -1,0 +1,17 @@
+#filter-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100%;
+  background-color: #223e92;
+}
+
+.skills-container div:hover {
+  cursor: pointer;
+  background-color: darkgray;
+}
+
+.active {
+  background-color: black !important;
+}

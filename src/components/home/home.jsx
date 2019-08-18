@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Events from "../events/events";
 import queryString from "query-string";
 import _ from "lodash";
 
@@ -7,17 +8,10 @@ class Home extends Component {
 
   componentDidMount() {}
 
-  validateProperty = input => {
-    if (input.name === "investorInformation.passiveIncomeGoal") {
-      if (input.value < 1) return "Passive Income Goal is required.";
-      // ...
-    }
-  };
-
   render() {
     return (
       <React.Fragment>
-        <h1>Hellow World</h1>
+        <Events />
       </React.Fragment>
     );
   }
